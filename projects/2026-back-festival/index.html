@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>현장 진행 도우미</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="theme.css">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><span class="logo" id="logo">B↗</span>
+    <div><strong id="title">불러오는 중</strong><small id="subtitle"></small></div></div>
+  <div class="clock num" id="clock">--:--:--<small>한국 시간</small></div>
+</header>
+<main>
+  <p class="date num" id="date"></p>
+  <div class="tools">
+    <button type="button" id="followBtn" aria-pressed="true">시각 따라가기</button>
+    <button type="button" id="wakeBtn" aria-pressed="false">화면 켜짐 유지</button>
+  </div>
+  <p class="hint">기본은 현재 시각에 맞는 순서를 보여 줍니다. 큐시트를 누르면 그 순서로 바뀌고, ‘시각 따라가기’를 누르면 돌아옵니다. 선택은 이 기기에만 적용됩니다.</p>
+
+  <section class="live" aria-live="polite">
+    <div class="live-top"><span class="pill" id="pill">현재 순서</span><span id="state"></span></div>
+    <h2 id="curName"></h2>
+    <p class="plan num" id="curPlan"></p>
+    <div class="big num" id="big">--:--</div>
+    <p class="big-label" id="bigLabel"></p>
+    <div class="bar"><b id="bar"></b></div>
+  </section>
+
+  <button class="next" type="button" id="next" hidden>
+    <small>다음 순서</small><strong id="nextName"></strong><span class="num" id="nextPlan"></span>
+  </button>
+
+  <section class="timer" id="timer">
+    <div class="timer-row"><div><small>보조 타이머 (소리 없음)</small><div class="t num" id="tVal">00:00</div></div>
+      <button type="button" id="tStop">중지</button></div>
+    <div class="presets" id="presets"></div>
+  </section>
+
+  <div class="sec-head"><h3>오늘의 큐시트</h3><label><input type="checkbox" id="mainOnly">본행사만 보기</label></div>
+  <ol class="cues" id="cues"></ol>
+
+  <details class="check" id="checkWrap">
+    <summary><span>준비 체크리스트</span><span class="num" id="checkCount">0 / 0</span></summary>
+    <div class="tabs" role="tablist">
+      <button type="button" role="tab" aria-selected="true" data-phase="prep">출발 전 챙기기</button>
+      <button type="button" role="tab" aria-selected="false" data-phase="back">철수 때 회수</button>
+    </div>
+    <p class="hint">체크는 이 기기에 저장되며 다른 기기와 동기화되지 않습니다.</p>
+    <div id="cats"></div>
+    <button type="button" class="reset" id="resetBtn">이 탭의 체크 모두 지우기</button>
+  </details>
+
+  <footer id="footer"></footer>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
